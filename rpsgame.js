@@ -13,7 +13,25 @@ function getComputerChoice() {
     else {
         computerChoice = "Scissors"
     }
-    return computerChoice;
+    return computerChoice.toUpperCase();
+}
+
+function getPlayerChoice() {
+    let playerChoice = prompt("Please enter your choice: ");
+    playerChoice = playerChoice.toUpperCase();
+    if (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
+        alert("You choose an invalid object! Type: Rock, Paper, or Scissors");
+        playerChoice = getPlayerChoice();
+        return playerChoice;
+    }
+    else {
+        return playerChoice;
+    }
+}
+
+function rpsGameRound() {
+    
 }
 
 console.log(getComputerChoice())
+console.log(getPlayerChoice())
