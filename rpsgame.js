@@ -29,9 +29,28 @@ function getPlayerChoice() {
     }
 }
 
-function rpsGameRound() {
-    
+function rpsGameRound(computerPick, playerPick) {
+    let winner = null;
+    alert(`The computer's pick is ${computerPick}`)
+    if (computerPick == playerPick) {
+        return winner;
+    }
+    else if (computerPick === 'ROCK' && playerPick == 'SCISSORS') {
+        winner = "Computer";
+        return winner;
+    }
+    else if (computerPick === 'PAPER' && playerPick == 'ROCK') {
+        winner = "Computer";
+        return winner;
+    }
+    else if (computerPick === 'SCISSORS' && playerPick === 'PAPER') {
+        winner = "Computer";
+        return winner;
+    }
+    else {
+        winner = "Player";
+        return winner;
+    }
 }
 
-console.log(getComputerChoice())
-console.log(getPlayerChoice())
+console.log(rpsGameRound(getComputerChoice(), getPlayerChoice()))
