@@ -53,4 +53,38 @@ function rpsGameRound(computerPick, playerPick) {
     }
 }
 
-console.log(rpsGameRound(getComputerChoice(), getPlayerChoice()))
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let didPlayerWin = false;
+
+    for (let i=0; i<=4; i++) {
+       let winner = rpsGameRound(getComputerChoice(), getPlayerChoice());
+       if (winner === 'Player') {
+        playerScore += 1;
+        alert('You won this round!');
+       }
+       else if (winner === 'Computer') {
+        computerScore += 1;
+        alert('You lost this round!');
+       }
+       else {
+        alert('It\'s a tie!');
+       }
+    }
+
+    if (playerScore == computerScore) {
+        alert('The match ended in a TIE');
+    }
+    else if (playerScore > computerScore){
+        alert('You managed to beat the computer');
+    }
+    else {
+        alert('The computer won this time')
+    }
+}
+
+game()
+
+
+
