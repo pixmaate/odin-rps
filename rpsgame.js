@@ -1,6 +1,8 @@
 const playerBtns = document.querySelector('.playerButtons');
 const playerBtnArray = document.querySelectorAll('.playerBtn');
 const computerBtnArray = document.querySelectorAll('.computerBtn');
+const scoreText = document.querySelector('#scoreTracker');
+const winnerText = document.createElement('p');
 
 const gameLengthWins = 5;
 
@@ -28,7 +30,22 @@ playerBtns.addEventListener('click', (event) => {
     if (!isButton) {
         return;
     }
-    rpsGameRound(getComputerChoice(),getPlayerChoice(btnValue))
+    if (playerWinCount === gameLengthWins || computerWinCount === gameLengthWins) {
+        return;
+    }
+    else {
+        rpsGameRound(getComputerChoice(),getPlayerChoice(btnValue))
+    };
+    if (playerWinCount === gameLengthWins || computerWinCount === gameLengthWins) {
+        scoreText.textContent = `The final score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
+        if (playerWinCount > computerWinCount) {
+            winnerText.textContent = 'You WON!';
+        }
+        else {
+            winnerText.textContent = 'You LOST!';
+        }
+        scoreText.appendChild(winnerText);
+    };
 });
 
 function getRandomNumber(max) {
@@ -104,11 +121,13 @@ function rpsGameRound(computerPick, playerPick) {
 function game(winner) {
     if (winner === 'Player') {
         playerWinCount += 1;
+        scoreText.textContent = `Current Score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
     }
     else if (winner === 'Computer') {
         computerWinCount +=1;
+        scoreText.textContent = `Current Score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
     };
-    alert(`Current Score: Player ${playerWinCount} Computer ${computerWinCount}`)
+        
 
     /*if (1=0) {
       let winner = rpsGameRound(getComputerChoice(), getPlayerChoice());
