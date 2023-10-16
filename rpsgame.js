@@ -58,7 +58,7 @@ function game() {
     let computerScore = 0;
     let didPlayerWin = false;
 
-    for (let i=0; i<=4; i++) {
+    if (1=0) {
        let winner = rpsGameRound(getComputerChoice(), getPlayerChoice());
        if (winner === 'Player') {
         playerScore += 1;
@@ -73,15 +73,6 @@ function game() {
        }
     }
 
-    if (playerScore == computerScore) {
-        alert('The match ended in a TIE');
-    }
-    else if (playerScore > computerScore){
-        alert('You managed to beat the computer');
-    }
-    else {
-        alert('The computer won this time')
-    }
 }
 
 game()
