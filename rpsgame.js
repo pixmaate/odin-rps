@@ -38,7 +38,11 @@ computerBtnArray.forEach(el => {
 });
 
 
+
 playerBtns.addEventListener('click', (event) => {
+    if (playerWinCount === gameLengthWins || computerWinCount === gameLengthWins) {
+        return;
+    }
     playerBtnArray.forEach(el => {
         el.style.backgroundColor = 'white';
     });
@@ -47,12 +51,7 @@ playerBtns.addEventListener('click', (event) => {
     if (!isButton) {
         return;
     }
-    if (playerWinCount === gameLengthWins || computerWinCount === gameLengthWins) {
-        return;
-    }
-    else {
-        rpsGameRound(getComputerChoice(),getPlayerChoice(btnValue))
-    };
+    rpsGameRound(getComputerChoice(),getPlayerChoice(btnValue));
     if (playerWinCount === gameLengthWins || computerWinCount === gameLengthWins) {
         scoreText.textContent = `The final score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
         if (playerWinCount > computerWinCount) {

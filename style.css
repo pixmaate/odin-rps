@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .mainWrapper {
@@ -14,6 +14,7 @@ body {
     max-width: 640px;
     justify-content: center;
     align-items: center;
+    margin-top: 24px;
 
 }
 
