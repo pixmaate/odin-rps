@@ -1,3 +1,7 @@
+const playerBtn = document.querySelectorAll('.playerBtn')
+
+
+
 function getRandomNumber(max) {
     return Math.floor(Math.random() * max);
 }
@@ -58,8 +62,8 @@ function game() {
     let computerScore = 0;
     let didPlayerWin = false;
 
-    if (1=0) {
-       let winner = rpsGameRound(getComputerChoice(), getPlayerChoice());
+    /*if (1=0) {
+      let winner = rpsGameRound(getComputerChoice(), getPlayerChoice());
        if (winner === 'Player') {
         playerScore += 1;
         alert('You won this round!');
@@ -71,7 +75,7 @@ function game() {
        else {
         alert('It\'s a tie!');
        }
-    }
+    }*/
 
 }
 
