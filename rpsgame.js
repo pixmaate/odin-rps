@@ -1,6 +1,14 @@
-const playerBtn = document.querySelectorAll('.playerBtn')
+const playerBtns = document.querySelector('.playerButtons');
 
 
+playerBtns.addEventListener('click', (event) => {
+    const isButton = event.target.nodeName === 'BUTTON';
+    const btnValue = event.target.textContent
+    if (!isButton) {
+        return;
+    }
+    rpsGameRound(getComputerChoice(),getPlayerChoice(btnValue))
+});
 
 function getRandomNumber(max) {
     return Math.floor(Math.random() * max);
@@ -20,17 +28,10 @@ function getComputerChoice() {
     return computerChoice.toUpperCase();
 }
 
-function getPlayerChoice() {
-    let playerChoice = prompt("Please enter your choice: ");
+function getPlayerChoice(plyrChoice) {
+    let playerChoice = plyrChoice;
     playerChoice = playerChoice.toUpperCase();
-    if (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
-        alert("You choose an invalid object! Type: Rock, Paper, or Scissors");
-        playerChoice = getPlayerChoice();
-        return playerChoice;
-    }
-    else {
-        return playerChoice;
-    }
+    return playerChoice;
 }
 
 function rpsGameRound(computerPick, playerPick) {
@@ -79,7 +80,6 @@ function game() {
 
 }
 
-game()
 
 
 
