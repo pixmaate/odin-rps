@@ -2,13 +2,29 @@ const playerBtns = document.querySelector('.playerButtons');
 const playerBtnArray = document.querySelectorAll('.playerBtn');
 const computerBtnArray = document.querySelectorAll('.computerBtn');
 const scoreText = document.querySelector('#scoreTracker');
-const winnerText = document.createElement('p');
+const resetScore = document.querySelector('#resetBtn');
 
+
+const winnerText = document.createElement('p');
 const gameLengthWins = 5;
 
 let playerWinCount = 0;
 let computerWinCount = 0;
 
+scoreText.textContent = `Current Score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
+
+resetBtn.addEventListener('click', () => {
+    playerWinCount = 0;
+    computerWinCount = 0;
+    scoreText.textContent = `Current Score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
+    playerBtnArray.forEach(el => {
+        el.style.backgroundColor = 'white';
+    });
+    
+    computerBtnArray.forEach(el => {
+        el.style.backgroundColor = 'white';
+    });
+});
 
 
 playerBtnArray.forEach(el => {
