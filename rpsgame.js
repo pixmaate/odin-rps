@@ -13,10 +13,12 @@ let computerWinCount = 0;
 
 scoreText.textContent = `Current Score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
 
+
 resetBtn.addEventListener('click', () => {
     playerWinCount = 0;
     computerWinCount = 0;
     scoreText.textContent = `Current Score: Player ${playerWinCount} VS Computer ${computerWinCount}`;
+
     playerBtnArray.forEach(el => {
         el.style.backgroundColor = 'white';
     });
@@ -42,7 +44,6 @@ playerBtns.addEventListener('click', (event) => {
     });
     const isButton = event.target.nodeName === 'BUTTON';
     const btnValue = event.target.textContent
-    event.target.style.backgroundColor = 'green';
     if (!isButton) {
         return;
     }
@@ -75,27 +76,15 @@ function getComputerChoice() {
     });
     if (computerChoice === 0) {
         computerChoice = "Rock";
-        computerBtnArray.forEach(el => {
-            if (el.textContent === "Rock") {
-                el.style.backgroundColor = 'Gray';
-            };
-        });
+      
     }
     else if (computerChoice === 1) {
         computerChoice = "Paper";
-        computerBtnArray.forEach(el => {
-            if (el.textContent === "Paper") {
-                el.style.backgroundColor = 'Gray';
-            };
-        });
+      
     }
     else {
         computerChoice = "Scissors"
-        computerBtnArray.forEach(el => {
-            if (el.textContent === "Scissors") {
-                el.style.backgroundColor = 'Gray';
-            };
-        });
+        
     }
     return computerChoice.toUpperCase();
 }
@@ -106,29 +95,72 @@ function getPlayerChoice(plyrChoice) {
     return playerChoice;
 }
 
+function greyButtonsOnTie(computerPick, playerPick) {
+    computerBtnArray.forEach(el => {
+        if (el.textContent.toUpperCase() === computerPick) {
+            el.style.backgroundColor = 'Gray';
+        };
+    });
+    playerBtnArray.forEach(el => {
+        if (el.textContent.toUpperCase() === playerPick) {
+            el.style.backgroundColor = 'Gray';
+        };
+    });
+}
+
+function greenButtononWin(computerPick, playerPick) {
+    computerBtnArray.forEach(el => {
+        if (el.textContent.toUpperCase() === computerPick) {
+            el.style.backgroundColor = 'Red';
+        };
+    });
+    playerBtnArray.forEach(el => {
+        if (el.textContent.toUpperCase() === playerPick) {
+            el.style.backgroundColor = 'Green';
+        };
+    });
+}
+
+function redButtononLose(computerPick, playerPick) {
+    computerBtnArray.forEach(el => {
+        if (el.textContent.toUpperCase() === computerPick) {
+            el.style.backgroundColor = 'Green';
+        };
+    });
+    playerBtnArray.forEach(el => {
+        if (el.textContent.toUpperCase() === playerPick) {
+            el.style.backgroundColor = 'Red';
+        };
+    });
+}
+
 function rpsGameRound(computerPick, playerPick) {
     let winner = null;
     if (computerPick == playerPick) {
-        
+        greyButtonsOnTie(computerPick, playerPick)
         return winner;
     }
     else if (computerPick === 'ROCK' && playerPick == 'SCISSORS') {
         winner = "Computer";
+        redButtononLose(computerPick, playerPick)
         game(winner);
         return winner;
     }
     else if (computerPick === 'PAPER' && playerPick == 'ROCK') {
         winner = "Computer";
+        redButtononLose(computerPick, playerPick)
         game(winner);
         return winner;
     }
     else if (computerPick === 'SCISSORS' && playerPick === 'PAPER') {
         winner = "Computer";
+        redButtononLose(computerPick, playerPick)
         game(winner);
         return winner;
     }
     else {
         winner = "Player";
+        greenButtononWin(computerPick, playerPick)
         game(winner);
         return winner;
     }
